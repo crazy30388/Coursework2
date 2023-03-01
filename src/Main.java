@@ -1,5 +1,3 @@
-import Task.Task;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -11,14 +9,14 @@ public class Main {
         try (Scanner scanner = new Scanner(System.in)){
             label:
             while (true){
-                printMenu();
+                TaskMenu.printMenu();
                 System.out.println("Выберите пункт меню: ");
                 if(scanner.hasNextInt()){
                     int menu = scanner.nextInt();
                     switch (menu){
                         case 1:
                             Task task;
-                            task = createTask(scanner);
+                            task = CreateTask.createTask(scanner);
                             System.out.println(task);
                             try{
                                 service.add(task);
@@ -40,8 +38,8 @@ public class Main {
                             }
                             break;
                         case 3:
-                            System.out.println("Введите дату чтобы посмотреть список задач, вводите дату в формате 00.00.0000");
-                            System.out.println(service.getAllByDate(LocalDate.parse(scanner.next(), DateTimeFormatter.ISO_DATE)));
+                            System.out.println("Введите дату чтобы посмотреть список задач, вводите дату в формате дд.мм.гггг");
+                            System.out.println(service.getAllByDate(LocalDate.parse(scanner.next(), DateTimeFormatter.ISO_LOCAL_DATE)));
                             break;
                         case 0:
                             break label;
@@ -52,13 +50,5 @@ public class Main {
                 }
             }
         }
-    }
-
-    private static Task createTask(Scanner scanner) {
-        Task o = null;
-        return o;
-    }
-
-    private static void printMenu() {
     }
 }

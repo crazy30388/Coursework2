@@ -1,5 +1,3 @@
-package Enum;
-
 public enum Type {
     WORK ("Рабочая задача"),
     PERSONAL("Личная задача");
@@ -12,6 +10,7 @@ public enum Type {
     public String getValue() {
         return value;
     }
+
 
     @Override
     public String toString() {
